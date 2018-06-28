@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-1">
+    Search
+    <input type="text" class="form-control" [(ngModel)]="searchValue" (input)="searchOnValueChange($event.target.value)" />
+  </div>
+  <div class="col-sm-1">
+    In
+    <p-dropdown [options]="searchOptions" [(ngModel)]="searchOption" placeholder="Select a City" optionLabel="label" [showClear]="true" (onChange) = "searchOnKeyChange($event.value)"></p-dropdown>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <p-dataTable [value]="currencies" [lazy]="true" [rows]="5" [paginator]="true" [totalRecords]="totalRecords" (onLazyLoad)="loadCurrenciesLazy($event)"
+      filterDelay="100" emptyMessage="" #dt class="col-sm-12" selectionMode="single" [contextMenu]="cm" [(selection)]="selectedCurrency"
+      (onRowSelect)="redirectToCurrencyDetails()">
+
+      <p-column field="id" header="id"></p-column>
+      <p-column field="attributes.code" header="code"></p-column>
+      <p-column field="attributes.name" header="name"></p-column>
+      <p-column field="attributes.type" header="type"></p-column>
+      <p-column field="attributes.code_iso_numeric3" header="code_iso_numeric3"></p-column>
+      <p-column field="attributes.code_iso_alpha3" header="code_iso_alpha3"></p-column>
+      <p-column field="attributes.symbol" header="symbol"></p-column>
+      <p-column field="attributes.native_symbol" header="native_symbol"></p-column>
+      <p-column field="attributes.decimal_e" header="decimal_e"></p-column>
+      <p-column field="attributes.category" header="category"></p-column>
+    </p-dataTable>
+  </div>
+  <div class="row">

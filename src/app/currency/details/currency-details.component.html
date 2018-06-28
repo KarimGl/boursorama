@@ -1,0 +1,33 @@
+<div class="col-sm-3">
+<p-card title="{{currency.id}}" subtitle="Details" styleClass="ui-card-shadow">
+  
+  <div>
+    <table>
+      <tr>
+        <td>Code: </td>
+        <td>{{currency.id}} </td>
+      </tr>
+      <tr>
+        <td>Name: </td>
+        <td>{{currency.attributes.name}} </td>
+      </tr>
+      <tr>
+        <td>Currency Type: </td>
+        <td>{{currency.attributes.currency_type}} </td>
+      </tr>
+      <tr>
+        <td>Code iso numeric3: </td>
+        <td>{{currency.attributes.code_iso_numeric3}} </td>
+      </tr>
+      <tr>
+        <td>Code iso alpha3: </td>
+        <td>{{currency.attributes.code_iso_alpha3}} </td>
+      </tr>
+    </table>
+
+  </div>
+  <p-footer>
+      <button class="btn btn-danger" (click)="redirectToCurrenciesList()"><i class="fa fa-undo" aria-hidden="true"></i> Return</button>
+  </p-footer>
+</p-card>
+</div>
