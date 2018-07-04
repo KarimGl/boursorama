@@ -2,7 +2,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Currency } from 'src/app/currency/model/currency';
 import { InjectionToken } from '@angular/core';
-import { HttpParams } from "@angular/common/http";
+import { HttpParams } from '@angular/common/http';
 import { CurrencyService } from 'src/app/currency/service/currency.service';
 import { Page } from 'src/app/currency/model/page';
 import { HttpClient } from '@angular/common/http';
@@ -20,7 +20,7 @@ export class CurrencyServiceImpl implements CurrencyService {
   }
 
   getCurrencyById(id: number) {
-    return this._http.get('https://api.openfintech.io/v1/currencies/' + id, { observe: "response" })
+    return this._http.get('https://api.openfintech.io/v1/currencies/' + id, { observe: 'response' })
       .pipe(
       map((res: HttpResponse<any>) => {
         // Check if there are a body before parsing the Json.
@@ -40,7 +40,7 @@ export class CurrencyServiceImpl implements CurrencyService {
     }
     params = params.set('page[number]', start.toString());
     params = params.set('page[size]', limit.toString());
-    return this._http.get('https://api.openfintech.io/v1/currencies', { params: params, observe: "response" })
+    return this._http.get('https://api.openfintech.io/v1/currencies', { params: params, observe: 'response' })
       .pipe(
       map((res: HttpResponse<any>) => {
         // Check if there are a body before parsing the Json.
@@ -69,11 +69,11 @@ export class CurrencyServiceImpl implements CurrencyService {
         native_symbol: json.attributes.native_symbol,
         category: json.attributes.category
       }
-    }
+    };
   }
 
   private handleHttpError(error: HttpErrorResponse) {
-    console.error("HttpWrapperService error : ", error);
+    console.error('HttpWrapperService error : ', error);
     return throwError(error.error);
   }
 }

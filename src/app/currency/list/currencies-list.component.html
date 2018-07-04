@@ -1,29 +1,37 @@
 <div class="row">
   <div class="col-sm-1">
     Search
-    <input type="text" class="form-control" [(ngModel)]="searchValue" (input)="searchOnValueChange($event.target.value)" />
+    <input type="text" class="form-control" [(ngModel)]="searchValue" (input)="searchOnValueChange($event.target.value)" placeholder="key word"
+    />
   </div>
   <div class="col-sm-1">
     In
-    <p-dropdown [options]="searchOptions" [(ngModel)]="searchOption" placeholder="Select a City" optionLabel="label" [showClear]="true" (onChange) = "searchOnKeyChange($event.value)"></p-dropdown>
+    <p-dropdown [options]="searchOptions" [(ngModel)]="searchOption" placeholder="Select key" optionLabel="label" (onChange)="searchOnKeyChange($event.value)"></p-dropdown>
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-8">
-    <p-dataTable [value]="currencies" [lazy]="true" [rows]="5" [paginator]="true" [totalRecords]="totalRecords" (onLazyLoad)="loadCurrenciesLazy($event)"
-      filterDelay="100" emptyMessage="" #dt class="col-sm-12" selectionMode="single" [contextMenu]="cm" [(selection)]="selectedCurrency"
-      (onRowSelect)="redirectToCurrencyDetails()">
-
-      <p-column field="id" header="id"></p-column>
-      <p-column field="attributes.code" header="code"></p-column>
-      <p-column field="attributes.name" header="name"></p-column>
-      <p-column field="attributes.type" header="type"></p-column>
-      <p-column field="attributes.code_iso_numeric3" header="code_iso_numeric3"></p-column>
-      <p-column field="attributes.code_iso_alpha3" header="code_iso_alpha3"></p-column>
-      <p-column field="attributes.symbol" header="symbol"></p-column>
-      <p-column field="attributes.native_symbol" header="native_symbol"></p-column>
-      <p-column field="attributes.decimal_e" header="decimal_e"></p-column>
-      <p-column field="attributes.category" header="category"></p-column>
-    </p-dataTable>
+  <div class="ui-g">
+    <p-card class="ui-lg-2 ui-md-3 ui-sm-6" *ngFor="let currency of currencies" title="{{currency.id}}" subtitle="Summary" styleClass="ui-card-shadow"
+      (click)="redirectToCurrencyDetails(currency.id)" [style]="{cursor: 'pointer'}">
+      <div>
+        <table>
+          <tr>
+            <td>Id: </td>
+            <td>{{currency.id}} </td>
+          </tr>
+          <tr>
+            <td>Type: </td>
+            <td>{{currency.attributes.type}} </td>
+          </tr>
+          <tr>
+            <td>Symbol: </td>
+            <td>{{currency.attributes.symbol}} </td>
+          </tr>
+        </table>
+      </div>
+    </p-card>
   </div>
   <div class="row">
+    <p-paginator [rows]="10" [totalRecords]="totalRecords" [rowsPerPageOptions]="[10,50,100]" (onPageChange)="paginate($event)"></p-paginator>
+  </div>
+</div>

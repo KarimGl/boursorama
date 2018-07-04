@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { DataTableModule } from 'primeng/primeng';
 import {CardModule} from 'primeng/card';
 import {DropdownModule} from 'primeng/dropdown';
+import {PaginatorModule} from 'primeng/paginator';
 
 import { CurrenciesListComponent } from 'src/app/currency/list/currencies-list.component';
 import { CurrencyDetailsComponent } from 'src/app/currency/details/currency-details.component';
@@ -24,6 +25,7 @@ import { ROUTES, CurrencyRoutesModule } from 'src/app/currency/currency-routes';
     DataTableModule,
     CardModule,
     DropdownModule,
+    PaginatorModule,
     CurrencyRoutesModule,
   ],
   declarations: [

@@ -9,5 +9,5 @@ export interface Currency {
         symbol?: string,
         native_symbol?: string,
         category?: string
-        };
-  }
+    };
+}
